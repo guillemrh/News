@@ -1,0 +1,12 @@
+version: '3'
+services:
+  my_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: news_api
+    image: api_connection_docker
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
