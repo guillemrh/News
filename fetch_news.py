@@ -1,12 +1,22 @@
 import requests
 import pandas as pd
 from datetime import datetime, timedelta
+import os
+from dotenv import load_dotenv
+
+# Load the variables from .en file
+load_dotenv()
+
+# Get the API keys
+news_api_key = os.getenv('news_api_key')
+
+# Make sure the API key has loaded correctly
+if not api_key:
+    raise ValueError("API key not found. Please, add it to the .env file")
 
 # Define the endpoint and parameters
 url = 'https://newsapi.org/v2/everything'
 
-# Define the API key
-api_key = '9823b6d05b1147e797f78e0ea453020f'
 
 # Calculate the date for the 'from' parameter (yesterday's date)
 yesterday = datetime.now() - timedelta(1)
@@ -18,7 +28,7 @@ params = {
     'q': 'Trump OR Biden OR Harris',
     'from': from_date,
     'sortBy': 'popularity',
-    'apiKey': api_key
+    'apiKey': news_api_key
 }
 
 # Make the GET request with the parameters

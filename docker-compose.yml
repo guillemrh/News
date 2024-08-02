@@ -5,8 +5,10 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: news_api
-    image: api_connection_docker
+    image: news_api
     ports:
       - "8080:8080"
     volumes:
       - .:/app
+    restart: always
+
